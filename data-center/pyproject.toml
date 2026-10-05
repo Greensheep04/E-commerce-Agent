@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "data-center"
+version = "0.1.0"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "data-center-protocol",
+    "integration-protocol",
+    "fastapi",
+    "uvicorn",
+    "httpx>=0.28,<1",
+    "sqlalchemy[asyncio]>=2,<2.1",
+    "psycopg[binary]>=3.3,<4",
+    "asyncpg>=0.31,<1",
+    "pgvector>=0.4.2,<1",
+    "pydantic-settings>=2,<3",
+    "docling==2.133.0",
+    "docling-core[chunking]",
+    "python-pptx>=1.0,<2",
+    "openpyxl>=3.1,<4",
+    "lightrag-hku==1.5.7",
+    "dlt[postgres]==1.30.0",
+    "dbt-core==1.12.5",
+    "dbt-postgres>=1.10,<2",
+    "metricflow==0.213.0",
+    "sqlglot",
+    "markitdown[docx,xlsx,pptx,pdf]==0.1.8",
+    "pylatexenc==2.10",
+    "ocrmypdf==17.13.0",
+    "openlineage-python==1.53.0",
+    "opentelemetry-api",
+    "opentelemetry-sdk",
+    "opentelemetry-instrumentation-fastapi",
+    "opentelemetry-instrumentation-httpx",
+    "opentelemetry-instrumentation-sqlalchemy",
+    "apscheduler>=3.11,<4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio>=1,<2", "ruff"]
+
+[project.scripts]
+data-center = "data_center.cli:main"
+
+[tool.uv.sources]
+data-center-protocol = { path = "../packages/data-center-protocol", editable = true }
+integration-protocol = { path = "../packages/integration-protocol", editable = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/data_center"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--basetemp=.scratch/pytest"
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100

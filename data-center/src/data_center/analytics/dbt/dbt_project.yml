@@ -1,0 +1,12 @@
+name: data_center_analytics
+version: "1.0.0"
+config-version: 2
+profile: data_center_analytics
+model-paths: ["models"]
+test-paths: ["tests"]
+models:
+  data_center_analytics:
+    +materialized: incremental
+    +unique_key: ["snapshot_id", "record_id"]
+    mf_time_spine:
+      +materialized: table

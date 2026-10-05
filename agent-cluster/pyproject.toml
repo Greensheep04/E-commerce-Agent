@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-cluster"
+version = "0.1.0"
+description = "通过MCP编排业务Agent并保存目标和长期执行记录"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "integration-protocol>=0.1.0,<0.2",
+    "mcp==2.2.0",
+    "deepagents==0.7.21",
+    "langgraph>=1,<2",
+    "langgraph-checkpoint-postgres",
+    "apscheduler>=3.11,<4",
+    "sqlalchemy>=2,<3",
+    "psycopg[binary]>=3,<4",
+    "pydantic>=2.12,<3",
+    "httpx>=0.28,<1",
+    "jsonschema>=4.23,<5",
+    "fastapi",
+    "uvicorn",
+    "tokenizers>=0.23,<1",
+]
+
+[project.scripts]
+agent-cluster = "agent_cluster.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10", "pytest-asyncio>=1,<2", "ruff>=0.12,<1"]
+
+[tool.uv.sources]
+integration-protocol = { path = "../packages/integration-protocol", editable = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_cluster"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "--import-mode=importlib --basetemp=.scratch/pytest-cluster"
+
+[tool.ruff]
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["agent_cluster"]

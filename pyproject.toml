@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "project-shop"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "sqlalchemy[asyncio]",
+    "psycopg[binary]",
+    "alembic",
+    "sqladmin",
+    "pydantic-settings",
+    "pwdlib[argon2]",
+    "itsdangerous",
+    "python-multipart",
+    "datasets",
+    "pillow",
+    "httpx",
+    "markupsafe",
+    "langgraph>=1,<2",
+    "langgraph-checkpoint-postgres",
+    "python-dotenv",
+    "httpx-sse",
+    "openai>=2,<3",
+    "pgvector",
+    "jinja2",
+    "numpy",
+    "pandas",
+    "integration-protocol",
+    "integration-host",
+    "poster-framework",
+    "agent-cluster",
+    "data-center-protocol",
+]
+
+[tool.uv.sources]
+integration-protocol = { path = "packages/integration-protocol", editable = true }
+integration-host = { path = "packages/integration-host", editable = true }
+poster-framework = { path = "vendor/poster-framework" }
+agent-cluster = { path = "agent-cluster", editable = true }
+data-center-protocol = { path = "packages/data-center-protocol", editable = true }
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio>=1,<2", "ruff"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/shop"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--basetemp=.scratch/pytest"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+ignore = ["B008", "RUF012"]

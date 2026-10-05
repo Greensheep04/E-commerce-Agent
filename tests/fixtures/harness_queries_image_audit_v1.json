@@ -1,0 +1,247 @@
+{
+  "version": "image-audit-v1",
+  "source": {
+    "source_id": "Marqo/deepfashion-multimodal",
+    "revision": "21601c432a281c8a7deaa2afdda952b4b9ef3fd7",
+    "split": "data",
+    "selection": "该 revision 唯一 split 的 source_order 0 至 49"
+  },
+  "record_count": 30,
+  "minimum_correct": 27,
+  "selection_note": "全部50张原图的独立模型特征核查确定预期；原参考text、被测描述及检索排名没有提供给核查模型。保留有明确匹配的原查询条件；没有可靠匹配的条件采用原图有依据的同类特征。原始评价文件及报告保留。",
+  "annotation": {
+    "type": "model_image_annotation",
+    "human_visual_verification": false,
+    "frozen_at": "2026-09-30T12:15:08Z",
+    "original_fixture": "tests/fixtures/harness_queries.json",
+    "original_fixture_sha256": "9353a35f3d80614326e2bea96d8d6d0e8130393d5f7cf54087c44cfe5a51f3f4",
+    "primary_report": ".scratch/evidence/har-reference-audit-20260930/report.json",
+    "primary_report_sha256": "0b4d8b4f4a38e7ae95818c5d4e4de1703688f8862946a544dd367461d530dc19",
+    "supplementary_report": ".scratch/evidence/har-query-image-audit-20260930T1110/report.json",
+    "supplementary_report_sha256": "7d76d725b42807f6b73a70c97e2ef0b680438da697861ac7866db5984ab34683",
+    "evidence_lookup": "expected_source_orders对应primary_report.records的source_order；每条记录保存record_id、AssetVersion、图片SHA-256、provider_request_id及完整特征。补充报告通过record_id关联。",
+    "normalization": "crew与圆领使用相同条件；上衣包含T恤、衬衫、毛衣、背心、夹克及未明确类别的上装；格纹包含格子纹；橄榄绿与橄榄绿色使用相同条件。null、无法确认或明确冲突的字段不满足查询条件。",
+    "uncertain_fields": [
+      {"source_order": 6, "fields": ["upper_sleeve_length"], "reason": "内搭袖子被外搭遮挡，袖长不确定。"},
+      {"source_order": 18, "fields": ["upper_type", "upper_sleeve_length", "upper_neckline", "upper_pattern", "lower_type"], "reason": "背带裤结构使上下装边界不确定，上衣特征及短裤类别不作为预期；帽子仍明确。"},
+      {"source_order": 20, "fields": ["upper_neckline"], "reason": "背带遮挡领口。"},
+      {"source_order": 23, "fields": ["upper_type", "upper_neckline"], "reason": "两份核查的上衣类别和领型存在冲突。"},
+      {"source_order": 35, "fields": ["upper_neckline"], "reason": "领口细节因分辨率无法完全确认。"},
+      {"source_order": 36, "fields": ["upper_neckline", "upper_pattern"], "reason": "补充核查无法确认领口及图案。"},
+      {"source_order": 38, "fields": ["upper_type", "upper_neckline"], "reason": "两份核查分别给出立领和圆领，上衣类别也不一致。"},
+      {"source_order": 41, "fields": ["upper_neckline", "lower_pattern"], "reason": "补充核查无法确认领口和下装图案；腰带由主核查明确确认。"}
+    ]
+  },
+  "queries": [
+    {
+      "id": "HQ-01",
+      "query": "找男士短袖纯色T恤，领口是 V 领。",
+      "conditions": {"upper_type": ["T恤"], "upper_sleeve_length": ["短袖"], "upper_neckline": ["V领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [17],
+      "expected_record_ids": ["MEN-Denim-id_00000182-01_7_additional"]
+    },
+    {
+      "id": "HQ-02",
+      "query": "推荐男士短袖纯色圆领 T 恤。",
+      "conditions": {"upper_type": ["T恤"], "upper_sleeve_length": ["短袖"], "upper_neckline": ["圆领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [0, 3, 5, 19, 29, 31, 46, 47, 49],
+      "expected_record_ids": ["MEN-Denim-id_00000080-01_7_additional", "MEN-Denim-id_00000089-03_7_additional", "MEN-Denim-id_00000089-05_7_additional", "MEN-Denim-id_00000265-01_2_side", "MEN-Denim-id_00000826-03_1_front", "MEN-Denim-id_00000867-01_1_front", "MEN-Denim-id_00002559-01_4_full", "MEN-Denim-id_00002559-03_7_additional", "MEN-Denim-id_00002707-01_1_front"]
+    },
+    {
+      "id": "HQ-03",
+      "query": "找男士短袖纯色上衣，领型写作 crew。",
+      "conditions": {"upper_sleeve_length": ["短袖"], "upper_neckline": ["圆领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [0, 3, 5, 19, 29, 31, 46, 47, 49],
+      "expected_record_ids": ["MEN-Denim-id_00000080-01_7_additional", "MEN-Denim-id_00000089-03_7_additional", "MEN-Denim-id_00000089-05_7_additional", "MEN-Denim-id_00000265-01_2_side", "MEN-Denim-id_00000826-03_1_front", "MEN-Denim-id_00000867-01_1_front", "MEN-Denim-id_00002559-01_4_full", "MEN-Denim-id_00002559-03_7_additional", "MEN-Denim-id_00002707-01_1_front"]
+    },
+    {
+      "id": "HQ-04",
+      "query": "推荐男士短袖纯色翻领上衣。",
+      "conditions": {"upper_sleeve_length": ["短袖"], "upper_neckline": ["翻领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [7],
+      "expected_record_ids": ["MEN-Denim-id_00000089-15_4_full"]
+    },
+    {
+      "id": "HQ-05",
+      "query": "找男士短袖格纹衬衫，带翻领。",
+      "conditions": {"upper_type": ["衬衫"], "upper_sleeve_length": ["短袖"], "upper_neckline": ["翻领"], "upper_pattern": ["格纹"]},
+      "expected_source_orders": [21],
+      "expected_record_ids": ["MEN-Denim-id_00000313-01_1_front"]
+    },
+    {
+      "id": "HQ-06",
+      "query": "找男士中袖纯色翻领上衣。",
+      "conditions": {"upper_sleeve_length": ["中袖"], "upper_neckline": ["翻领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [10],
+      "expected_record_ids": ["MEN-Denim-id_00000089-26_7_additional"]
+    },
+    {
+      "id": "HQ-07",
+      "query": "找男士中袖纯色圆领T恤。",
+      "conditions": {"upper_type": ["T恤"], "upper_sleeve_length": ["中袖"], "upper_neckline": ["圆领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [28],
+      "expected_record_ids": ["MEN-Denim-id_00000826-02_7_additional"]
+    },
+    {
+      "id": "HQ-08",
+      "query": "找男士长袖纯色圆领上衣。",
+      "conditions": {"upper_sleeve_length": ["长袖"], "upper_neckline": ["圆领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [9, 13, 45],
+      "expected_record_ids": ["MEN-Denim-id_00000089-18_4_full", "MEN-Denim-id_00000089-29_7_additional", "MEN-Denim-id_00002476-01_1_front"]
+    },
+    {
+      "id": "HQ-09",
+      "query": "找男士长袖条纹衬衫，领口为翻领。",
+      "conditions": {"upper_type": ["衬衫"], "upper_sleeve_length": ["长袖"], "upper_neckline": ["翻领"], "upper_pattern": ["条纹"]},
+      "expected_source_orders": [2],
+      "expected_record_ids": ["MEN-Denim-id_00000089-02_7_additional"]
+    },
+    {
+      "id": "HQ-10",
+      "query": "找男士长袖格纹上衣，带翻领。",
+      "conditions": {"upper_sleeve_length": ["长袖"], "upper_neckline": ["翻领"], "upper_pattern": ["格纹"]},
+      "expected_source_orders": [25],
+      "expected_record_ids": ["MEN-Denim-id_00000565-01_7_additional"]
+    },
+    {
+      "id": "HQ-11",
+      "query": "找男士长袖纯色立领上衣。",
+      "conditions": {"upper_sleeve_length": ["长袖"], "upper_neckline": ["立领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [22, 26, 39, 40],
+      "expected_record_ids": ["MEN-Denim-id_00000353-01_7_additional", "MEN-Denim-id_00000750-01_1_front", "MEN-Denim-id_00001198-03_7_additional", "MEN-Denim-id_00001198-04_7_additional"]
+    },
+    {
+      "id": "HQ-12",
+      "query": "找男士长袖纯色 crew 领上衣。",
+      "conditions": {"upper_sleeve_length": ["长袖"], "upper_neckline": ["圆领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [9, 13, 45],
+      "expected_record_ids": ["MEN-Denim-id_00000089-18_4_full", "MEN-Denim-id_00000089-29_7_additional", "MEN-Denim-id_00002476-01_1_front"]
+    },
+    {
+      "id": "HQ-13",
+      "query": "找男士长袖纯色翻领上衣。",
+      "conditions": {"upper_sleeve_length": ["长袖"], "upper_neckline": ["翻领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [4, 34, 43],
+      "expected_record_ids": ["MEN-Denim-id_00000089-04_7_additional", "MEN-Denim-id_00000938-02_1_front", "MEN-Denim-id_00001952-01_7_additional"]
+    },
+    {
+      "id": "HQ-14",
+      "query": "找男士无袖纯色圆领背心。",
+      "conditions": {"upper_type": ["背心"], "upper_sleeve_length": ["无袖"], "upper_neckline": ["圆领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [1, 8, 24, 30, 48],
+      "expected_record_ids": ["MEN-Denim-id_00000089-01_7_additional", "MEN-Denim-id_00000089-17_4_full", "MEN-Denim-id_00000516-01_1_front", "MEN-Denim-id_00000826-04_7_additional", "MEN-Denim-id_00002578-01_1_front"]
+    },
+    {
+      "id": "HQ-15",
+      "query": "找男士无袖纯色 crew 领背心。",
+      "conditions": {"upper_type": ["背心"], "upper_sleeve_length": ["无袖"], "upper_neckline": ["圆领"], "upper_pattern": ["纯色"]},
+      "expected_source_orders": [1, 8, 24, 30, 48],
+      "expected_record_ids": ["MEN-Denim-id_00000089-01_7_additional", "MEN-Denim-id_00000089-17_4_full", "MEN-Denim-id_00000516-01_1_front", "MEN-Denim-id_00000826-04_7_additional", "MEN-Denim-id_00002578-01_1_front"]
+    },
+    {
+      "id": "HQ-16",
+      "query": "找男士无袖印花背心。",
+      "conditions": {"upper_type": ["背心"], "upper_sleeve_length": ["无袖"], "upper_pattern": ["印花"]},
+      "expected_source_orders": [42],
+      "expected_record_ids": ["MEN-Denim-id_00001231-01_4_full"]
+    },
+    {
+      "id": "HQ-17",
+      "query": "找男士短袖格纹图案上衣。",
+      "conditions": {"upper_sleeve_length": ["短袖"], "upper_pattern": ["格纹"]},
+      "expected_source_orders": [21],
+      "expected_record_ids": ["MEN-Denim-id_00000313-01_1_front"]
+    },
+    {
+      "id": "HQ-18",
+      "query": "找男士带条纹的上衣。",
+      "conditions": {"upper_pattern": ["条纹"]},
+      "expected_source_orders": [2],
+      "expected_record_ids": ["MEN-Denim-id_00000089-02_7_additional"]
+    },
+    {
+      "id": "HQ-19",
+      "query": "找男士带格纹图案的上衣。",
+      "conditions": {"upper_pattern": ["格纹"]},
+      "expected_source_orders": [6, 21, 25],
+      "expected_record_ids": ["MEN-Denim-id_00000089-08_4_full", "MEN-Denim-id_00000313-01_1_front", "MEN-Denim-id_00000565-01_7_additional"]
+    },
+    {
+      "id": "HQ-20",
+      "query": "找男士穿短裤并戴帽子的搭配。",
+      "conditions": {"lower_type": ["短裤"], "hat": [true]},
+      "expected_source_orders": [19, 20],
+      "expected_record_ids": ["MEN-Denim-id_00000265-01_2_side", "MEN-Denim-id_00000265-01_7_additional"]
+    },
+    {
+      "id": "HQ-21",
+      "query": "找男士中等长度的短裤穿搭。",
+      "conditions": {"lower_type": ["短裤"], "lower_length": ["中等长度"]},
+      "expected_source_orders": [20],
+      "expected_record_ids": ["MEN-Denim-id_00000265-01_7_additional"]
+    },
+    {
+      "id": "HQ-22",
+      "query": "找男士橄榄绿色纯色长裤。",
+      "conditions": {"lower_type": ["长裤"], "lower_colour": ["橄榄绿"], "lower_pattern": ["纯色"]},
+      "expected_source_orders": [6, 10, 39],
+      "expected_record_ids": ["MEN-Denim-id_00000089-08_4_full", "MEN-Denim-id_00000089-26_7_additional", "MEN-Denim-id_00001198-03_7_additional"]
+    },
+    {
+      "id": "HQ-23",
+      "query": "找男士长裤，裤面带印花。",
+      "conditions": {"lower_type": ["长裤"], "lower_pattern": ["印花"]},
+      "expected_source_orders": [31, 32, 33],
+      "expected_record_ids": ["MEN-Denim-id_00000867-01_1_front", "MEN-Denim-id_00000867-01_2_side", "MEN-Denim-id_00000867-01_3_back"]
+    },
+    {
+      "id": "HQ-24",
+      "query": "找男士长裤，带色块图案。",
+      "conditions": {"lower_type": ["长裤"], "lower_pattern": ["色块"]},
+      "expected_source_orders": [46],
+      "expected_record_ids": ["MEN-Denim-id_00002559-01_4_full"]
+    },
+    {
+      "id": "HQ-25",
+      "query": "找男士黑色纯色长款下装。",
+      "conditions": {"lower_length": ["长款"], "lower_colour": ["黑色"], "lower_pattern": ["纯色"]},
+      "expected_source_orders": [0, 1, 17, 24, 27, 34, 43],
+      "expected_record_ids": ["MEN-Denim-id_00000080-01_7_additional", "MEN-Denim-id_00000089-01_7_additional", "MEN-Denim-id_00000182-01_7_additional", "MEN-Denim-id_00000516-01_1_front", "MEN-Denim-id_00000826-01_1_front", "MEN-Denim-id_00000938-02_1_front", "MEN-Denim-id_00001952-01_7_additional"]
+    },
+    {
+      "id": "HQ-26",
+      "query": "找男士穿搭中有外搭上衣的记录。",
+      "conditions": {"outerwear": [true]},
+      "expected_source_orders": [6, 22, 23, 26, 32, 34, 41, 44],
+      "expected_record_ids": ["MEN-Denim-id_00000089-08_4_full", "MEN-Denim-id_00000353-01_7_additional", "MEN-Denim-id_00000353-02_7_additional", "MEN-Denim-id_00000750-01_1_front", "MEN-Denim-id_00000867-01_2_side", "MEN-Denim-id_00000938-02_1_front", "MEN-Denim-id_00001223-01_4_full", "MEN-Denim-id_00002243-01_4_full"]
+    },
+    {
+      "id": "HQ-27",
+      "query": "找男士戴帽子的穿搭。",
+      "conditions": {"hat": [true]},
+      "expected_source_orders": [18, 19, 20, 22, 43],
+      "expected_record_ids": ["MEN-Denim-id_00000265-01_1_front", "MEN-Denim-id_00000265-01_2_side", "MEN-Denim-id_00000265-01_7_additional", "MEN-Denim-id_00000353-01_7_additional", "MEN-Denim-id_00001952-01_7_additional"]
+    },
+    {
+      "id": "HQ-28",
+      "query": "找男士手腕处带有饰品的穿搭。",
+      "conditions": {"wrist_accessory": [true]},
+      "expected_source_orders": [7, 32, 34],
+      "expected_record_ids": ["MEN-Denim-id_00000089-15_4_full", "MEN-Denim-id_00000867-01_2_side", "MEN-Denim-id_00000938-02_1_front"]
+    },
+    {
+      "id": "HQ-29",
+      "query": "找男士穿搭中明确带腰带的记录。",
+      "conditions": {"belt": [true]},
+      "expected_source_orders": [41],
+      "expected_record_ids": ["MEN-Denim-id_00001223-01_4_full"]
+    },
+    {
+      "id": "HQ-30",
+      "query": "找男士长袖毛衣。",
+      "conditions": {"upper_type": ["毛衣"], "upper_sleeve_length": ["长袖"]},
+      "expected_source_orders": [9, 44],
+      "expected_record_ids": ["MEN-Denim-id_00000089-18_4_full", "MEN-Denim-id_00002243-01_4_full"]
+    }
+  ]
+}

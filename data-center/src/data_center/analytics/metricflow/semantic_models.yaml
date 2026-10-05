@@ -1,0 +1,57 @@
+---
+semantic_model:
+  name: sales_order
+  description: Shipped Microsoft AdventureWorks sales orders
+  node_relation:
+    schema_name: $schema
+    alias: sales_orders
+  defaults:
+    agg_time_dimension: order_date
+  primary_entity: order
+  measures:
+    - name: sales_subtotal
+      expr: subtotal
+      agg: sum
+    - name: sales_order_count
+      expr: order_id
+      agg: count_distinct
+  dimensions:
+    - name: order_date
+      type: time
+      expr: order_date
+      type_params:
+        time_granularity: day
+    - name: snapshot_id
+      type: categorical
+      expr: snapshot_id
+  entities:
+    - name: employee
+      type: foreign
+      expr: employee_id
+---
+semantic_model:
+  name: sales_quota
+  description: Microsoft AdventureWorks sales quota records
+  node_relation:
+    schema_name: $schema
+    alias: sales_quotas
+  defaults:
+    agg_time_dimension: period_start
+  primary_entity: quota
+  measures:
+    - name: quota_amount_measure
+      expr: quota_amount
+      agg: sum
+  dimensions:
+    - name: period_start
+      type: time
+      expr: period_start
+      type_params:
+        time_granularity: day
+    - name: snapshot_id
+      type: categorical
+      expr: snapshot_id
+  entities:
+    - name: employee
+      type: foreign
+      expr: employee_id

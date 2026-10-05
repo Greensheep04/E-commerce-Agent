@@ -1,0 +1,52 @@
+{
+  "connectors": [
+    {
+      "connector_id": "shop",
+      "base_url": "http://127.0.0.1:8001",
+      "username": "your-account",
+      "password_file": "../.local/agent-hub/password",
+      "expected_actor_id": "replace-with-authenticated-user-id",
+      "connect_timeout": 10,
+      "read_timeout": 300
+    }
+  ],
+  "agents": [
+    {
+      "connector_id": "shop", "module_id": "harness", "agent_id": "shop_harness",
+      "tool_name": "shop_harness_agent", "description": "从来源素材生成并审核宣传内容",
+      "allowed_operations": ["create", "list", "show", "run", "resume", "cancel"], "expected_version": "1"
+    },
+    {
+      "connector_id": "shop", "module_id": "customer", "agent_id": "shop_customer",
+      "tool_name": "shop_customer_agent", "description": "查询本人订单并处理已确认的客服工单",
+      "allowed_operations": ["identity", "orders", "order", "list", "create_conversation", "conversation", "submit", "turn", "events", "cancel", "resume"],
+      "expected_version": "1"
+    },
+    {
+      "connector_id": "shop", "module_id": "assessment", "agent_id": "shop_assessment",
+      "tool_name": "shop_assessment_agent", "description": "在授权员工范围生成销售考核报告",
+      "allowed_operations": ["create", "list", "show", "run", "resume", "cancel", "metrics", "evidence"], "expected_version": "1"
+    },
+    {
+      "connector_id": "shop", "module_id": "poster", "agent_id": "shop_poster",
+      "tool_name": "shop_poster_agent", "description": "准备海报关键词并调用已登记业务角色",
+      "allowed_operations": ["status", "prepare", "prepare_direct", "show", "run", "restore"], "expected_version": "1"
+    },
+    {
+      "connector_id": "shop", "module_id": "data_center", "agent_id": "shop_data_center",
+      "tool_name": "shop_data_center_agent", "description": "查询授权文档、当前业务及经营指标，保存快照、引用与费用",
+      "allowed_operations": ["ask", "query", "catalog", "metrics", "tasks", "show", "run", "cancel", "reference", "export", "ingest", "sync", "build_graph", "graph_status", "manage_sources", "register_source", "set_grant", "withdraw_source"],
+      "expected_version": "1"
+    }
+  ],
+  "shared_tools": [
+    {
+      "connector_id": "shop", "module_id": "materials", "operation": "search",
+      "tool_name": "shop_materials_search", "description": "查询来源素材", "expected_version": "1"
+    },
+    {
+      "connector_id": "shop", "module_id": "materials", "operation": "show",
+      "tool_name": "shop_materials_show", "description": "读取来源素材及版本", "expected_version": "1"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+---
+metric:
+  name: sales_amount
+  description: Sum of SubTotal for shipped orders
+  type: simple
+  type_params:
+    measure: sales_subtotal
+---
+metric:
+  name: order_count
+  description: Distinct count of shipped sales orders
+  type: simple
+  type_params:
+    measure: sales_order_count
+---
+metric:
+  name: quota_amount
+  description: Sum of sales quota for the selected period
+  type: simple
+  type_params:
+    measure: quota_amount_measure
+---
+metric:
+  name: average_order_value
+  description: Shipped sales amount divided by shipped order count
+  type: ratio
+  type_params:
+    numerator:
+      name: sales_amount
+    denominator:
+      name: order_count
+---
+metric:
+  name: quota_completion
+  description: Shipped sales amount divided by quota amount
+  type: ratio
+  type_params:
+    numerator:
+      name: sales_amount
+    denominator:
+      name: quota_amount

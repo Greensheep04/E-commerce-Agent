@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-hub"
+version = "0.1.0"
+description = "通过MCP stdio登记Agent与共享工具的独立接入框架"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "fastmcp==4.0.10",
+    "mcp==2.2.0",
+    "httpx>=0.28,<1",
+    "integration-protocol>=0.1.0,<0.2",
+    "jsonschema>=4.23,<5",
+    "pydantic>=2.12,<3",
+]
+
+[project.scripts]
+agent-hub = "agent_hub.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10", "pytest-asyncio>=1,<2", "ruff>=0.12,<1"]
+
+[tool.uv.sources]
+integration-protocol = { path = "../packages/integration-protocol", editable = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_hub"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["agent_hub"]

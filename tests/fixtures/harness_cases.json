@@ -1,0 +1,583 @@
+{
+  "main_source": {
+    "source_id": "ashraq/fashion-product-images-small",
+    "revision": "3859c76db2f6f3d3b9a3863345e3ccdbff75879d"
+  },
+  "record_count": 20,
+  "class_counts": {
+    "materials_found": 12,
+    "no_match": 4,
+    "required_source_fact_missing": 4
+  },
+  "cases": [
+    {
+      "id": "HC-01",
+      "prompt": "请推荐最多2件黑色男士 T 恤。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Tshirts",
+        "baseColour": "Black"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Men"
+        },
+        {
+          "field": "articleType",
+          "value": "Tshirts"
+        },
+        {
+          "field": "baseColour",
+          "value": "Black"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 8,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-02",
+      "prompt": "请推荐最多2件海军蓝男士 T 恤。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Tshirts",
+        "baseColour": "Navy Blue"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Men"
+        },
+        {
+          "field": "articleType",
+          "value": "Tshirts"
+        },
+        {
+          "field": "baseColour",
+          "value": "Navy Blue"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 7,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-03",
+      "prompt": "请推荐最多2件白色男士 T 恤。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Tshirts",
+        "baseColour": "White"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Men"
+        },
+        {
+          "field": "articleType",
+          "value": "Tshirts"
+        },
+        {
+          "field": "baseColour",
+          "value": "White"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 5,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-04",
+      "prompt": "请推荐最多2件海军蓝男士衬衫。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Shirts",
+        "baseColour": "Navy Blue"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Men"
+        },
+        {
+          "field": "articleType",
+          "value": "Shirts"
+        },
+        {
+          "field": "baseColour",
+          "value": "Navy Blue"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 3,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-05",
+      "prompt": "请推荐最多2件绿色男士衬衫。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Shirts",
+        "baseColour": "Green"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Men"
+        },
+        {
+          "field": "articleType",
+          "value": "Shirts"
+        },
+        {
+          "field": "baseColour",
+          "value": "Green"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 3,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-06",
+      "prompt": "请推荐最多2件红色男士衬衫。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Shirts",
+        "baseColour": "Red"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Men"
+        },
+        {
+          "field": "articleType",
+          "value": "Shirts"
+        },
+        {
+          "field": "baseColour",
+          "value": "Red"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 3,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-07",
+      "prompt": "请推荐最多2件蓝色女士上衣。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Women",
+        "articleType": "Tops",
+        "baseColour": "Blue"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Women"
+        },
+        {
+          "field": "articleType",
+          "value": "Tops"
+        },
+        {
+          "field": "baseColour",
+          "value": "Blue"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 3,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-08",
+      "prompt": "请推荐最多2件绿色女士库尔塔。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Women",
+        "articleType": "Kurtas",
+        "baseColour": "Green"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Women"
+        },
+        {
+          "field": "articleType",
+          "value": "Kurtas"
+        },
+        {
+          "field": "baseColour",
+          "value": "Green"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 3,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-09",
+      "prompt": "请推荐最多2款棕色女士手提包。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Women",
+        "articleType": "Handbags",
+        "baseColour": "Brown"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Women"
+        },
+        {
+          "field": "articleType",
+          "value": "Handbags"
+        },
+        {
+          "field": "baseColour",
+          "value": "Brown"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 5,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-10",
+      "prompt": "请推荐最多2款白色女士手提包。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Women",
+        "articleType": "Handbags",
+        "baseColour": "White"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Women"
+        },
+        {
+          "field": "articleType",
+          "value": "Handbags"
+        },
+        {
+          "field": "baseColour",
+          "value": "White"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 3,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-11",
+      "prompt": "请推荐最多2款白色女士手表。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Women",
+        "articleType": "Watches",
+        "baseColour": "White"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Women"
+        },
+        {
+          "field": "articleType",
+          "value": "Watches"
+        },
+        {
+          "field": "baseColour",
+          "value": "White"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 3,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-12",
+      "prompt": "请推荐最多2双白色男士运动鞋。",
+      "expected_status": "materials_found",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Sports Shoes",
+        "baseColour": "White"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Men"
+        },
+        {
+          "field": "articleType",
+          "value": "Sports Shoes"
+        },
+        {
+          "field": "baseColour",
+          "value": "White"
+        }
+      ],
+      "notes": {
+        "scenario": "source_match",
+        "source_match_count": 7,
+        "requested_max_items": 2,
+        "expected_rule": "返回 materials_found，推荐1至2件，全部满足 attributes。"
+      }
+    },
+    {
+      "id": "HC-13",
+      "prompt": "请找一件男士连衣裙。",
+      "expected_status": "insufficient",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Dresses"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Men"
+        },
+        {
+          "field": "articleType",
+          "value": "Dresses"
+        }
+      ],
+      "notes": {
+        "scenario": "source_no_match",
+        "source_match_count": 0,
+        "expected_rule": "返回 insufficient 且不推荐素材；两个字段的真实过滤结果均无记录。"
+      }
+    },
+    {
+      "id": "HC-14",
+      "prompt": "请找一块适合女童的手表。",
+      "expected_status": "insufficient",
+      "attributes": {
+        "gender": "Girls",
+        "articleType": "Watches"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Girls"
+        },
+        {
+          "field": "articleType",
+          "value": "Watches"
+        }
+      ],
+      "notes": {
+        "scenario": "source_no_match",
+        "source_match_count": 0,
+        "expected_rule": "返回 insufficient 且不推荐素材；两个字段的真实过滤结果均无记录。"
+      }
+    },
+    {
+      "id": "HC-15",
+      "prompt": "请找一条紫色女士腰带。",
+      "expected_status": "insufficient",
+      "attributes": {
+        "gender": "Women",
+        "articleType": "Belts",
+        "baseColour": "Purple"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Women"
+        },
+        {
+          "field": "articleType",
+          "value": "Belts"
+        },
+        {
+          "field": "baseColour",
+          "value": "Purple"
+        }
+      ],
+      "notes": {
+        "scenario": "source_no_match",
+        "source_match_count": 0,
+        "expected_rule": "返回 insufficient 且不推荐素材；gender、articleType、baseColour 组合的真实过滤结果为空。"
+      }
+    },
+    {
+      "id": "HC-16",
+      "prompt": "请找一件黑色男童 T 恤。",
+      "expected_status": "insufficient",
+      "attributes": {
+        "gender": "Boys",
+        "articleType": "Tshirts",
+        "baseColour": "Black"
+      },
+      "required_facts": [
+        {
+          "field": "gender",
+          "value": "Boys"
+        },
+        {
+          "field": "articleType",
+          "value": "Tshirts"
+        },
+        {
+          "field": "baseColour",
+          "value": "Black"
+        }
+      ],
+      "notes": {
+        "scenario": "source_no_match",
+        "source_match_count": 0,
+        "expected_rule": "返回 insufficient 且不推荐素材；三个字段的真实过滤结果为空。"
+      }
+    },
+    {
+      "id": "HC-17",
+      "prompt": "请推荐最多2件黑色男士 T 恤，并保证每件价格不超过500元；没有价格依据时不要推荐。",
+      "expected_status": "insufficient",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Tshirts",
+        "baseColour": "Black"
+      },
+      "required_facts": [
+        {
+          "field": "price",
+          "operator": "<=",
+          "value": 500,
+          "unit": "CNY"
+        }
+      ],
+      "notes": {
+        "scenario": "required_source_fact_missing",
+        "source_match_count": 8,
+        "requested_max_items": 2,
+        "missing_source_fields": [
+          "price"
+        ],
+        "expected_rule": "主来源没有 price 字段；返回 insufficient，不声称满足价格条件。"
+      }
+    },
+    {
+      "id": "HC-18",
+      "prompt": "请推荐最多2款棕色女士手提包，并确认每款当前有库存；没有库存依据时不要推荐。",
+      "expected_status": "insufficient",
+      "attributes": {
+        "gender": "Women",
+        "articleType": "Handbags",
+        "baseColour": "Brown"
+      },
+      "required_facts": [
+        {
+          "field": "stock",
+          "operator": ">",
+          "value": 0
+        }
+      ],
+      "notes": {
+        "scenario": "required_source_fact_missing",
+        "source_match_count": 5,
+        "requested_max_items": 2,
+        "missing_source_fields": [
+          "stock"
+        ],
+        "expected_rule": "主来源没有 stock 字段；返回 insufficient，不声称商品有库存。"
+      }
+    },
+    {
+      "id": "HC-19",
+      "prompt": "请推荐最多2件海军蓝男士衬衫，并且来源必须能确认面料为100%棉；没有成分依据时不要推荐。",
+      "expected_status": "insufficient",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Shirts",
+        "baseColour": "Navy Blue"
+      },
+      "required_facts": [
+        {
+          "field": "material",
+          "value": "100% cotton"
+        }
+      ],
+      "notes": {
+        "scenario": "required_source_fact_missing",
+        "source_match_count": 3,
+        "requested_max_items": 2,
+        "missing_source_fields": [
+          "material"
+        ],
+        "expected_rule": "主来源没有 material 成分字段；返回 insufficient，不推断面料比例。"
+      }
+    },
+    {
+      "id": "HC-20",
+      "prompt": "请推荐最多2双白色男士运动鞋，并且只能推荐来源明确说明防水的款式；没有防水依据时不要推荐。",
+      "expected_status": "insufficient",
+      "attributes": {
+        "gender": "Men",
+        "articleType": "Sports Shoes",
+        "baseColour": "White"
+      },
+      "required_facts": [
+        {
+          "field": "waterproof",
+          "value": true
+        }
+      ],
+      "notes": {
+        "scenario": "required_source_fact_missing",
+        "source_match_count": 7,
+        "requested_max_items": 2,
+        "missing_source_fields": [
+          "waterproof"
+        ],
+        "expected_rule": "主来源没有 waterproof 性能字段；返回 insufficient，不推断防水性能。"
+      }
+    }
+  ]
+}

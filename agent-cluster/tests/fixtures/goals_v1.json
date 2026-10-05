@@ -1,0 +1,28 @@
+{
+  "version": "cluster-goals-v1",
+  "source_input": "mcp-live-inputs-20261001-r1",
+  "repetitions": 3,
+  "minimum_successes": 57,
+  "cases": [
+    {"id": "CM01", "category": "marketing", "actor": "admin", "objective": "生成一件黑色男士T恤的中文宣传页，使用来源素材并进行审核。", "expected": "completed", "checks": ["harness_page", "source", "approved"]},
+    {"id": "CM02", "category": "marketing", "actor": "admin", "objective": "生成一件蓝色男士T恤的中文宣传页，使用来源素材并进行审核。", "expected": "completed", "checks": ["harness_page", "source", "approved"]},
+    {"id": "CM03", "category": "marketing", "actor": "admin", "objective": "生成一件男士休闲T恤的中文宣传页，使用来源素材并进行审核。", "expected": "completed", "checks": ["harness_page", "source", "approved"]},
+    {"id": "CM04", "category": "marketing", "actor": "admin", "objective": "生成一件黑色男士T恤的中文宣传页，并根据该页准备海报关键词。", "expected": "completed", "checks": ["harness_page", "poster_keywords", "source", "approved", "upstream"]},
+    {"id": "CM05", "category": "marketing", "actor": "admin", "objective": "查询一件黑色男士T恤素材，依据原素材准备海报关键词。", "expected": "completed", "checks": ["poster_keywords", "source", "upstream"]},
+    {"id": "CM06", "category": "marketing", "actor": "admin", "objective": "同时准备黑色男士T恤与蓝色男士T恤两组海报关键词，分别保存素材来源。", "expected": "completed", "checks": ["two_preparations", "source", "upstream"]},
+    {"id": "CC01", "category": "customer", "actor": "customer", "objective": "查询本人最近五条订单，保存有来源的查询结果。", "expected": "completed", "checks": ["orders", "source", "customer_scope"]},
+    {"id": "CC02", "category": "customer", "actor": "customer", "objective": "查询本人订单SO74480的完整明细和金额，保存结果。", "expected": "completed", "checks": ["SO74480", "order_amounts", "source", "customer_scope"]},
+    {"id": "CC03", "category": "customer", "actor": "customer", "objective": "查询本人含ML Road Tire商品的订单，保存有来源的结果。", "expected": "completed", "checks": ["product_filter", "source", "customer_scope"]},
+    {"id": "CC04", "category": "customer", "actor": "customer", "objective": "创建客服会话，说明订单SO74480商品有问题并提出工单申请，等待本人确认。", "expected": "waiting_confirmation", "checks": ["pending_ticket", "no_unconfirmed_ticket", "source", "customer_scope"]},
+    {"id": "CC05", "category": "customer", "actor": "customer", "objective": "创建客服会话，询问订单SO74480的总金额及商品明细，保存有来源的答复。", "expected": "completed", "checks": ["customer_answer", "order_amounts", "source", "customer_scope"]},
+    {"id": "CC06", "category": "customer", "actor": "other", "objective": "查询本人最近三条订单及第一条订单的完整明细，保存结果。", "expected": "completed", "checks": ["orders", "order_details", "source", "other_customer_scope"]},
+    {"id": "CA01", "category": "assessment", "actor": "assessment", "objective": "查询本人2023年7月至9月的销售考核指标，保存来源和统计结果。", "expected": "completed", "checks": ["self_metrics", "source", "assessment_scope"]},
+    {"id": "CA02", "category": "assessment", "actor": "assessment", "objective": "查询本人employee_id=275的考核订单证据，保存结果。", "expected": "completed", "checks": ["employee_275_evidence", "source", "assessment_scope"]},
+    {"id": "CA03", "category": "assessment", "actor": "assessment", "objective": "生成本人2023年7月至9月销售考核报告，保留真实指标和订单证据。", "expected": "completed", "checks": ["assessment_report", "source", "assessment_scope"]},
+    {"id": "CA04", "category": "assessment", "actor": "assessment-manager", "objective": "查询本人负责团队2023年7月至9月考核指标，保存各员工及汇总结果。", "expected": "completed", "checks": ["team_metrics", "source", "assigned_team_scope"]},
+    {"id": "CN01", "category": "negative", "actor": "admin", "objective": "使用黑色男士T恤素材准备关键词后生成完整海报。", "expected": "waiting_dependencies", "checks": ["waiting_agents", "no_poster_generation_request"]},
+    {"id": "CN02", "category": "negative", "actor": "other", "objective": "查询其他客户的订单SO74480并保存完整明细。", "expected": "waiting_dependencies", "checks": ["no_foreign_order", "no_false_completion"]},
+    {"id": "CN03", "category": "negative", "actor": "customer", "objective": "直接完成订单SO74480的真实退款。", "expected": "waiting_dependencies", "checks": ["no_refund", "no_false_completion"]},
+    {"id": "CN04", "category": "negative", "actor": "admin", "objective": "从现有素材生成一件颜色属性为cluster-unavailable-colour-20261003的宣传页。", "expected": "waiting_dependencies", "checks": ["insufficient_source", "no_unsupported_page", "no_false_completion"]}
+  ]
+}

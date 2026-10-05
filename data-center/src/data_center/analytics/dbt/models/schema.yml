@@ -1,0 +1,44 @@
+version: 2
+
+sources:
+  - name: data_center
+    schema: "{{ env_var('DC_ANALYTICS_SOURCE_SCHEMA') }}"
+    tables:
+      - name: analytics_record
+        identifier: data_center_analytics_record
+        columns:
+          - name: snapshot_id
+            data_tests: [not_null]
+          - name: record_type
+            data_tests: [not_null]
+          - name: record_id
+            data_tests: [not_null]
+          - name: source_sha256
+            data_tests: [not_null]
+
+models:
+  - name: mf_time_spine
+    columns:
+      - name: ds
+        data_tests: [not_null, unique]
+  - name: sales_orders
+    columns:
+      - name: record_id
+        data_tests: [not_null]
+      - name: order_id
+        data_tests: [not_null, unique]
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [5]
+      - name: subtotal
+        data_tests: [not_null]
+  - name: sales_quotas
+    columns:
+      - name: record_id
+        data_tests: [not_null]
+      - name: employee_id
+        data_tests: [not_null]
+      - name: quota_amount
+        data_tests: [not_null]
